@@ -28,13 +28,12 @@ void main() async {
 }
 ```
 ## Data Model
-* define your model `User`
-* extend model with `FirestoreModel` with your model Type
+* define your model `User` by extending `FirestoreModel`
 ```dart
 class User extends FirestoreModel<User> {
 }
 ```
-* override `toMap` && `responseBuilder`
+* add your data members and override `toMap` && `responseBuilder`
 ```dart
 class User extends FirestoreModel<User> {
   String? firstName;
@@ -42,13 +41,13 @@ class User extends FirestoreModel<User> {
 
   User({this.firstName, this.lastName});
 
-  // use to read
+  // use for reading from firestore documents
   User.fromMap(Map<String, dynamic> map) {
     this.firstName = map['first_name'];
     this.lastName = map['last_name'];
   }
 
-  // use to write
+  // use for writing to firestore documents
   @override
   Map<String, dynamic> get toMap => {
     'first_name': this.firstName,
@@ -60,8 +59,8 @@ class User extends FirestoreModel<User> {
   
 }
 ```
-* we plural model name and use it as collection name in this example collection name will be `users`.
-* if you wont to change collection name override `collectionName` in your model.
+* we use collection names in plural form (in this example, collection name will be `users`).
+* if you want to change collection name, override `collectionName` getter in your model.
 ```dart
 @override
 String get collectionName => 'users';
