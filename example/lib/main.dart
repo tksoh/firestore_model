@@ -108,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: ModelGetRefreshBuilder<User>(
+        child: ModelStreamGetBuilder<User>(
           onLoading: () {
             return Center(
               child: Text("Loading"),
