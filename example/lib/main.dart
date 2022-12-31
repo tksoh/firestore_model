@@ -109,6 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: ModelStreamGetBuilder<User>(
+          query: (query) => query.orderBy('createdAt', descending: false),
           onLoading: () {
             return Center(
               child: Text("Loading"),
